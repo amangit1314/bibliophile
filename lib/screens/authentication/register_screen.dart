@@ -22,7 +22,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
           style: GoogleFonts.poppins(
             textStyle: const TextStyle(
               fontSize: 20,
-              color: Colors.deepPurpleAccent,
+              color: Color(0xFF1D1055),
               fontWeight: FontWeight.w600,
             ),
           ),
@@ -101,7 +101,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                 margin: const EdgeInsets.symmetric(horizontal: 40),
                 height: 60,
                 decoration: BoxDecoration(
-                  color: Colors.deepPurple,
+                  color: const Color(0xFF1D1055),
                   borderRadius: BorderRadius.circular(10),
                 ),
                 child: Text(

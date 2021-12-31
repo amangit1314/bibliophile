@@ -23,7 +23,7 @@ class _LoginState extends State<Login> {
           style: GoogleFonts.poppins(
             textStyle: const TextStyle(
               fontSize: 20,
-              color: Colors.deepPurpleAccent,
+              color: Color(0xFF1D1055),
               fontWeight: FontWeight.w600,
             ),
           ),
@@ -90,7 +90,7 @@ class _LoginState extends State<Login> {
                 margin: const EdgeInsets.symmetric(horizontal: 40),
                 height: 60,
                 decoration: BoxDecoration(
-                  color: Colors.deepPurple,
+                  color: const Color(0xFF1D1055),
                   borderRadius: BorderRadius.circular(10),
                 ),
                 child: Text(
@@ -104,7 +104,7 @@ class _LoginState extends State<Login> {
                   ),
                 ),
               ),
-              onTap: () => {Navigator.pushNamed(context, '/login')},
+              onTap: () => {Navigator.pushNamed(context, '/home')},
             ),
             const SizedBox(height: 10),
             Row(
