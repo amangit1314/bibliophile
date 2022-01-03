@@ -9,6 +9,7 @@ environment:
   sdk: '>=2.15.0-116.0.dev <3.0.0'
 
 dependencies:
+  animated_theme_switcher: ^2.0.6
   cupertino_icons: ^1.0.2
   flutter:
     sdk: flutter

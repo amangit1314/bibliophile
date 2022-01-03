@@ -1,6 +1,4 @@
-// ignore_for_file: unused_label
-
-import 'package:book_info/screens/home/scroll_view.dart';
+import 'package:book_info/screens/home/categories.dart';
 import 'package:book_info/utils/widgets/text.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter/material.dart';
@@ -14,11 +12,13 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> with TickerProviderStateMixin {
   List books = ['1.png', '2.png', '3.png'];
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   Widget build(BuildContext context) {
     TabController _tabController = TabController(length: 3, vsync: this);
     return Scaffold(
+      key: _scaffoldKey,
       backgroundColor: Colors.white,
       appBar: AppBar(
         elevation: 0,
@@ -29,7 +29,7 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
             color: Colors.black,
           ),
           onPressed: () {
-            const Drawer();
+            _scaffoldKey.currentState!.openDrawer();
           },
         ),
         actions: const [
@@ -46,14 +46,14 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           const Padding(
-            padding: EdgeInsets.only(left: 16, top: 10, bottom: 16.0),
+            padding: EdgeInsets.only(left: 16),
             child: Textt(
               text: "Discover",
               size: 31,
               weight: FontWeight.w600,
             ),
           ),
-          const SizedBox(height: 20),
+          const SizedBox(height: 4),
           Container(
             margin: const EdgeInsets.all(0.0),
             child: Align(
@@ -76,7 +76,7 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
               ),
             ),
           ),
-          const SizedBox(height: 5),
+          const SizedBox(height: 4),
           Container(
             padding: const EdgeInsets.only(left: 20),
             height: 300,
@@ -96,7 +96,7 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
                         borderRadius: BorderRadius.circular(20),
                         color: Colors.pink,
                         image: const DecorationImage(
-                          image: AssetImage('assets/7.png'),
+                          image: AssetImage('assets/9.png'),
                           fit: BoxFit.cover,
                         ),
                       ),
@@ -108,11 +108,17 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
               ],
             ),
           ),
-          const SizedBox(height: 20),
-          /* const Padding(
-            padding: EdgeInsets.only(left: 21.0),
-            child: ScroleView(),
-          ),*/
+          const SizedBox(height: 10),
+          const Padding(
+            padding: EdgeInsets.only(left: 16),
+            child: Textt(
+              text: "Categories",
+              size: 20,
+              weight: FontWeight.w500,
+            ),
+          ),
+          const SizedBox(height: 10),
+          const Categories(),
         ],
       ),
     );
