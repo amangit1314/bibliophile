@@ -104,7 +104,7 @@ class _LoginState extends State<Login> {
                   ),
                 ),
               ),
-              onTap: () => {Navigator.pushNamed(context, '/home')},
+              onTap: () => {Navigator.pushNamed(context, '/main')},
             ),
             const SizedBox(height: 10),
             Row(

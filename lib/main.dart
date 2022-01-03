@@ -1,6 +1,7 @@
 //import 'package:book_info/views/screens/home.dart';
 import 'package:book_info/screens/authentication/login.dart';
 import 'package:book_info/screens/home/home.dart';
+import 'package:book_info/screens/nav_pages/main_page.dart';
 import 'package:book_info/screens/onboards/onboard_1.dart';
 import 'package:flutter/material.dart';
 import 'screens/authentication/register_screen.dart';
@@ -18,9 +19,10 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Darshan',
+      themeMode: ThemeMode.system,
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primarySwatch: Colors.blue, 
+        primarySwatch: Colors.blue,
       ),
       home: const Onboard1(),
       routes: {
@@ -28,6 +30,7 @@ class MyApp extends StatelessWidget {
         '/home': (context) => const Home(),
         '/register': (context) => const RegistrationScreen(),
         '/login': (context) => const Login(),
+        '/main': (context) => const MainPage(),
       },
     );
   }

@@ -11,7 +11,7 @@ class ScroleView extends StatelessWidget {
       child: Row(
         children: const [
           Padding(
-            padding: EdgeInsets.only(left: 21.0, top: 10),
+            padding: EdgeInsets.only(right: 21.0, top: 10),
             child: TileItem(
               image: AssetImage('assets/1.png'),
               height: 300,
@@ -20,7 +20,7 @@ class ScroleView extends StatelessWidget {
             ),
           ),
           Padding(
-            padding: EdgeInsets.only(left: 21.0, top: 10),
+            padding: EdgeInsets.only(right: 21.0, top: 10),
             child: TileItem(
               image: AssetImage('assets/2.png'),
               height: 300,
@@ -29,7 +29,7 @@ class ScroleView extends StatelessWidget {
             ),
           ),
           Padding(
-            padding: EdgeInsets.only(left: 21.0, top: 10),
+            padding: EdgeInsets.only(right: 21.0, top: 10),
             child: TileItem(
               image: AssetImage('assets/3.png'),
               height: 300,
@@ -38,7 +38,7 @@ class ScroleView extends StatelessWidget {
             ),
           ),
           Padding(
-            padding: EdgeInsets.only(left: 21.0, top: 10),
+            padding: EdgeInsets.only(right: 21.0, top: 10),
             child: TileItem(
               image: AssetImage('assets/4.png'),
               height: 300,
@@ -47,7 +47,7 @@ class ScroleView extends StatelessWidget {
             ),
           ),
           Padding(
-            padding: EdgeInsets.only(left: 21.0, top: 10),
+            padding: EdgeInsets.only(right: 21.0, top: 10),
             child: TileItem(
               image: AssetImage('assets/5.png'),
               height: 300,
@@ -56,16 +56,16 @@ class ScroleView extends StatelessWidget {
             ),
           ),
           Padding(
-            padding: EdgeInsets.only(left: 21.0, top: 10),
+            padding: EdgeInsets.only(right: 21.0, top: 10),
             child: TileItem(
               image: AssetImage('assets/6.png'),
               height: 300,
               width: 200,
-              color: Colors.grey,
+              color: Colors.cyan,
             ),
           ),
           Padding(
-            padding: EdgeInsets.only(left: 21.0, top: 10),
+            padding: EdgeInsets.only(right: 21.0, top: 10),
             child: TileItem(
               image: AssetImage('assets/7.png'),
               height: 300,
@@ -74,7 +74,7 @@ class ScroleView extends StatelessWidget {
             ),
           ),
           Padding(
-            padding: EdgeInsets.only(left: 21.0, top: 10),
+            padding: EdgeInsets.only(right: 21.0, top: 10),
             child: TileItem(
               image: AssetImage('assets/8.png'),
               height: 300,
@@ -83,7 +83,7 @@ class ScroleView extends StatelessWidget {
             ),
           ),
           Padding(
-            padding: EdgeInsets.only(left: 21.0, top: 10),
+            padding: EdgeInsets.only(right: 21.0, top: 10),
             child: TileItem(
               image: AssetImage('assets/9.png'),
               height: 300,
@@ -92,7 +92,7 @@ class ScroleView extends StatelessWidget {
             ),
           ),
           Padding(
-            padding: EdgeInsets.only(left: 21.0, top: 10),
+            padding: EdgeInsets.only(right: 21.0, top: 10),
             child: TileItem(
               image: AssetImage('assets/10.png'),
               height: 300,
@@ -101,7 +101,7 @@ class ScroleView extends StatelessWidget {
             ),
           ),
           Padding(
-            padding: EdgeInsets.only(left: 21.0, top: 10),
+            padding: EdgeInsets.only(right: 21.0, top: 10),
             child: TileItem(
               image: AssetImage('assets/11.png'),
               height: 300,
@@ -110,7 +110,7 @@ class ScroleView extends StatelessWidget {
             ),
           ),
           Padding(
-            padding: EdgeInsets.only(left: 21.0, top: 10),
+            padding: EdgeInsets.only(right: 21.0, top: 10),
             child: TileItem(
               image: AssetImage('assets/12.png'),
               height: 300,

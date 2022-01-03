@@ -2,7 +2,7 @@
 
 import 'package:book_info/screens/home/scroll_view.dart';
 import 'package:book_info/utils/widgets/text.dart';
-//import 'package:book_info/utils/widgets/tile_item.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter/material.dart';
 
 class Home extends StatefulWidget {
@@ -12,10 +12,12 @@ class Home extends StatefulWidget {
   _HomeState createState() => _HomeState();
 }
 
-class _HomeState extends State<Home> {
+class _HomeState extends State<Home> with TickerProviderStateMixin {
   List books = ['1.png', '2.png', '3.png'];
+
   @override
   Widget build(BuildContext context) {
+    TabController _tabController = TabController(length: 3, vsync: this);
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
@@ -30,59 +32,120 @@ class _HomeState extends State<Home> {
             const Drawer();
           },
         ),
-        actions: [
-          Container(
-            margin: const EdgeInsets.all(10),
-            height: 40,
-            width: 40,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(100),
-              color: Colors.black,
-              image: const DecorationImage(
-                image: AssetImage("assets/gif.gif"),
-              ),
+        actions: const [
+          Padding(
+            padding: EdgeInsets.all(8.0),
+            child: CircleAvatar(
+              backgroundImage: AssetImage("assets/gif.gif"),
             ),
           ),
         ],
       ),
       drawer: const Drawer(),
-      body: SafeArea(
-        child: Column(
-          children: [
-            const Padding(
-              padding: EdgeInsets.only(top: 10, bottom: 16.0),
-              child: Textt(
-                text: "Discover",
-                size: 31,
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          const Padding(
+            padding: EdgeInsets.only(left: 16, top: 10, bottom: 16.0),
+            child: Textt(
+              text: "Discover",
+              size: 31,
+              weight: FontWeight.w600,
+            ),
+          ),
+          const SizedBox(height: 20),
+          Container(
+            margin: const EdgeInsets.all(0.0),
+            child: Align(
+              alignment: Alignment.centerLeft,
+              child: TabBar(
+                labelPadding: const EdgeInsets.only(left: 20, right: 20),
+                labelColor: Colors.black,
+                unselectedLabelColor: Colors.grey,
+                controller: _tabController,
+                labelStyle: GoogleFonts.josefinSans(
+                    fontWeight: FontWeight.w600, fontSize: 17),
+                isScrollable: true,
+                indicatorSize: TabBarIndicatorSize.label,
+                indicator: CircleTabIndicator(color: Colors.black26, radius: 4),
+                tabs: const [
+                  Tab(text: "Books"),
+                  Tab(text: "Author"),
+                  Tab(text: "About"),
+                ],
               ),
             ),
-            Row(
+          ),
+          const SizedBox(height: 5),
+          Container(
+            padding: const EdgeInsets.only(left: 20),
+            height: 300,
+            width: double.maxFinite,
+            child: TabBarView(
+              controller: _tabController,
               children: [
-                GestureDetector(
-                  child: const Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 18.0),
-                    child: Textt(text: "Books"),
-                  ),
+                ListView.builder(
+                  itemCount: 12,
+                  scrollDirection: Axis.horizontal,
+                  itemBuilder: (BuildContext context, int index) {
+                    return Container(
+                      margin: const EdgeInsets.only(right: 15, top: 10),
+                      width: 200,
+                      height: 100,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(20),
+                        color: Colors.pink,
+                        image: const DecorationImage(
+                          image: AssetImage('assets/7.png'),
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+                    );
+                  },
                 ),
-                GestureDetector(
-                  child: const Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 18.0),
-                    child: Textt(text: "Authors"),
-                  ),
-                ),
-                GestureDetector(
-                  child: const Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 18.0),
-                    child: Textt(text: "About Books"),
-                  ),
-                ),
+                const Text("There"),
+                const Text("By"),
               ],
             ),
-            const SizedBox(height: 20),
-            const ScroleView(),
-          ],
-        ),
+          ),
+          const SizedBox(height: 20),
+          /* const Padding(
+            padding: EdgeInsets.only(left: 21.0),
+            child: ScroleView(),
+          ),*/
+        ],
       ),
     );
+  }
+}
+
+// ignore: must_be_immutable
+class CircleTabIndicator extends Decoration {
+  final Color color;
+  double radius;
+
+  CircleTabIndicator({required this.color, required this.radius});
+
+  @override
+  BoxPainter createBoxPainter([VoidCallback? onChanged]) {
+    return _CirclePainter(color: color, radius: radius);
+  }
+}
+
+class _CirclePainter extends BoxPainter {
+  late final Color color;
+  late double radius;
+
+  _CirclePainter({required this.color, required this.radius});
+
+  @override
+  void paint(Canvas canvas, Offset offset, ImageConfiguration configuration) {
+    Paint _paint = Paint();
+    _paint.color = color;
+    _paint.isAntiAlias = true;
+    final Offset circleOffSet = Offset(
+        configuration.size!.width / 2 - radius / 2,
+        configuration.size!.height - radius);
+    canvas.drawCircle(offset + circleOffSet, radius, _paint);
   }
 }
