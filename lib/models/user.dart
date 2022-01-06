@@ -12,4 +12,10 @@ class User {
     required this.about,
     required this.isDarkMode,
   });
+
+  get isLoggedIn => null;
+
+  get isOnboarded => null;
+
+  Object? get onboardPage => null;
 }

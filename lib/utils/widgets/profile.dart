@@ -31,13 +31,13 @@ class ProfileWidget extends StatelessWidget {
   }
 
   Widget buildImage() {
-    final image = NetworkImage(imagePath);
+    //final image = NetworkImage(imagePath);
 
     return ClipOval(
       child: Material(
         color: Colors.transparent,
         child: Ink.image(
-          image: image,
+          image: const AssetImage("assets/gif.gif"),
           fit: BoxFit.cover,
           width: 128,
           height: 128,

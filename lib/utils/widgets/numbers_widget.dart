@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class NumbersWidget extends StatelessWidget {
   const NumbersWidget({Key? key}) : super(key: key);
@@ -30,12 +31,17 @@ class NumbersWidget extends StatelessWidget {
           children: <Widget>[
             Text(
               value,
-              style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 24),
+              style: GoogleFonts.poppins(
+                textStyle:
+                    const TextStyle(fontWeight: FontWeight.bold, fontSize: 24),
+              ),
             ),
             const SizedBox(height: 2),
             Text(
               text,
-              style: const TextStyle(fontWeight: FontWeight.bold),
+              style: GoogleFonts.poppins(
+                textStyle: const TextStyle(fontWeight: FontWeight.bold),
+              ),
             ),
           ],
         ),

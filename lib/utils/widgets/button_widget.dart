@@ -1,4 +1,7 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class ButtonWidget extends StatelessWidget {
   final String text;
@@ -17,7 +20,12 @@ class ButtonWidget extends StatelessWidget {
           onPrimary: Colors.white,
           padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 12),
         ),
-        child: Text(text),
+        child: Text(
+          text,
+          style: GoogleFonts.poppins(
+            textStyle: const TextStyle(),
+          ),
+        ),
         onPressed: onClicked,
       );
 }
