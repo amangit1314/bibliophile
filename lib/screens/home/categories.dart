@@ -26,6 +26,7 @@ class _CategoriesState extends State<Categories> {
   @override
   Widget build(BuildContext context) {
     return Container(
+      margin: const EdgeInsets.symmetric(horizontal: 8),
       height: 120,
       width: double.maxFinite,
       //margin: const EdgeInsets.only(left: 20),
@@ -51,9 +52,13 @@ class _CategoriesState extends State<Categories> {
               const SizedBox(height: 8),
               Container(
                 margin: const EdgeInsets.only(top: 1),
-                child: Textt(
-                  text: images.values.elementAt(index),
-                  color: Colors.black26,
+                child: Expanded(
+                  child: Center(
+                    child: Textt(
+                      text: images.values.elementAt(index),
+                      color: Colors.black26,
+                    ),
+                  ),
                 ),
               ),
             ],

@@ -1,7 +1,6 @@
 import 'package:book_info/screens/home/categories.dart';
-import 'package:book_info/screens/nav_pages/bar_item_page.dart';
+import 'package:book_info/screens/nav_pages/drawer.dart';
 import 'package:book_info/screens/nav_pages/my_page.dart';
-import 'package:book_info/screens/nav_pages/search_page.dart';
 import 'package:book_info/utils/widgets/text.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter/material.dart';
@@ -19,17 +18,6 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> with TickerProviderStateMixin {
-
-    int selectedIndex = 0;
-
-  List<IconData> icons = [
-    FontAwesomeIcons.facebookMessenger,
-    FontAwesomeIcons.peopleCarry,
-    FontAwesomeIcons.video,
-    FontAwesomeIcons.fileAudio,
-    FontAwesomeIcons.userCircle,
-  ];
-
   static const Duration toggleDuration = Duration(milliseconds: 250);
   static const double maxSlide = 225;
   static const double minDragStartEdge = 60;
@@ -42,7 +30,7 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
     super.initState();
     _animationController = AnimationController(
       vsync: this,
-      duration: HomeState.toggleDuration,
+      duration: _HomeState.toggleDuration,
     );
   }
 
@@ -58,17 +46,6 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
     super.dispose();
   }
 
-  static const TextStyle optionStyle =
-      TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
-  // ignore: unused_field
-  static const List<Widget> _widgetOptions = <Widget>[
-    Home(child: MyDrawer()),
-    BarItemPage(),
-    SearchPage(),
-    MyPage(),
-  ];
-
-  List books = ['1.png', '2.png', '3.png'];
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
@@ -82,143 +59,149 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
         }
         return true;
       },
-      child: AnimatedBuilder(
-            animation: _animationController,
-            child: Scaffold(
-        key: _scaffoldKey,
-        backgroundColor: Colors.white,
-        appBar: AppBar(
-          elevation: 0,
-          backgroundColor: Colors.white,
-          leading: IconButton(
-            icon: const Icon(
-              Icons.menu,
-              color: Colors.black,
-            ),
-            onPressed: () {
-              _scaffoldKey.currentState!.openDrawer();
-            },
-          ),
-          actions: [
-            GestureDetector(
-                child: const Padding(
-                  padding: EdgeInsets.all(8.0),
-                  child: CircleAvatar(
-                    backgroundImage: AssetImage("assets/gif.gif"),
-                  ),
+      child: GestureDetector(
+        onHorizontalDragStart: _onDragStart,
+        onHorizontalDragUpdate: _onDragUpdate,
+        onHorizontalDragEnd: _onDragEnd,
+        onTap: toggleDrawer,
+        child: AnimatedBuilder(
+          animation: _animationController,
+          child: Scaffold(
+            key: _scaffoldKey,
+            backgroundColor: Colors.white,
+            appBar: AppBar(
+              elevation: 0,
+              backgroundColor: Colors.white,
+              leading: IconButton(
+                icon: const Icon(
+                  Icons.menu,
+                  color: Colors.black,
                 ),
-                onTap: () => Navigator.of(context).push(
-                      MaterialPageRoute(builder: (context) => const MyPage()),
-                    )),
-          ],
-        ),
-        drawer: const Drawer(),
-        body: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const Padding(
-              padding: EdgeInsets.only(left: 16),
-              child: Textt(
-                text: "Discover",
-                size: 31,
-                weight: FontWeight.w600,
+                onPressed: () {
+                  toggleDrawer;
+                },
               ),
-            ),
-            const SizedBox(height: 4),
-            Container(
-              margin: const EdgeInsets.all(0.0),
-              child: Align(
-                alignment: Alignment.centerLeft,
-                child: TabBar(
-                  labelPadding: const EdgeInsets.only(left: 20, right: 20),
-                  labelColor: Colors.black,
-                  unselectedLabelColor: Colors.grey,
-                  controller: _tabController,
-                  labelStyle: GoogleFonts.josefinSans(
-                      fontWeight: FontWeight.w600, fontSize: 17),
-                  isScrollable: true,
-                  indicatorSize: TabBarIndicatorSize.label,
-                  indicator: CircleTabIndicator(color: Colors.black26, radius: 4),
-                  tabs: const [
-                    Tab(text: "Books"),
-                    Tab(text: "Author"),
-                    Tab(text: "About"),
-                  ],
-                ),
-              ),
-            ),
-            const SizedBox(height: 4),
-            Container(
-              padding: const EdgeInsets.only(left: 20),
-              height: 300,
-              width: double.maxFinite,
-              child: TabBarView(
-                controller: _tabController,
-                children: [
-                  ListView.builder(
-                    itemCount: 12,
-                    scrollDirection: Axis.horizontal,
-                    itemBuilder: (BuildContext context, int index) {
-                      return Container(
-                        margin: const EdgeInsets.only(right: 15, top: 10),
-                        width: 200,
-                        height: 100,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(20),
-                          color: Colors.pink,
-                          image: const DecorationImage(
-                            image: AssetImage('assets/9.png'),
-                            fit: BoxFit.cover,
-                          ),
-                        ),
-                      );
-                    },
-                  ),
-                  const Text("There"),
-                  const Text("By"),
-                ],
-              ),
-            ),
-            const SizedBox(height: 10),
-            const Padding(
-              padding: EdgeInsets.only(left: 16),
-              child: Textt(
-                text: "Categories",
-                size: 20,
-                weight: FontWeight.w500,
-              ),
-            ),
-            const SizedBox(height: 10),
-            const Categories(),
-          ],
-        ),
-      );
-            builder: (context, child) {
-              double animValue = _animationController.value;
-              final slideAmount = maxSlide * animValue;
-              final contentScale = 1.0 - (0.3 * animValue);
-              return Stack(
-                children: <Widget>[
-                  const MyDrawer(),
-                  Transform(
-                    transform: Matrix4.identity()
-                      ..translate(slideAmount)
-                      ..scale(contentScale, contentScale),
-                    alignment: Alignment.centerLeft,
-                    child: GestureDetector(
-                      onTap: _animationController.isCompleted ? close : null,
-                      child: child,
+              actions: [
+                GestureDetector(
+                  child: const Padding(
+                    padding: EdgeInsets.all(8.0),
+                    child: CircleAvatar(
+                      backgroundImage: AssetImage("assets/gif.gif"),
                     ),
                   ),
-                ],
-              );
-            },
-          
+                  onTap: () => Navigator.of(context).push(
+                    MaterialPageRoute(builder: (context) => const MyPage()),
+                  ),
+                ),
+              ],
+            ),
+            body: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const Padding(
+                  padding: EdgeInsets.only(left: 16),
+                  child: Textt(
+                    text: "Discover",
+                    size: 31,
+                    weight: FontWeight.w600,
+                  ),
+                ),
+                const SizedBox(height: 4),
+                Container(
+                  margin: const EdgeInsets.all(0.0),
+                  child: Align(
+                    alignment: Alignment.centerLeft,
+                    child: TabBar(
+                      labelPadding: const EdgeInsets.only(left: 20, right: 20),
+                      labelColor: Colors.black,
+                      unselectedLabelColor: Colors.grey,
+                      controller: _tabController,
+                      labelStyle: GoogleFonts.josefinSans(
+                          fontWeight: FontWeight.w600, fontSize: 17),
+                      isScrollable: true,
+                      indicatorSize: TabBarIndicatorSize.label,
+                      indicator:
+                          CircleTabIndicator(color: Colors.black26, radius: 4),
+                      tabs: const [
+                        Tab(text: "Books"),
+                        Tab(text: "Author"),
+                        Tab(text: "About"),
+                      ],
+                    ),
+                  ),
+                ),
+                const SizedBox(height: 4),
+                Container(
+                  padding: const EdgeInsets.only(left: 20),
+                  height: 300,
+                  width: double.maxFinite,
+                  child: TabBarView(
+                    controller: _tabController,
+                    children: [
+                      ListView.builder(
+                        itemCount: 12,
+                        scrollDirection: Axis.horizontal,
+                        itemBuilder: (BuildContext context, int index) {
+                          return Container(
+                            margin: const EdgeInsets.only(right: 15, top: 10),
+                            width: 200,
+                            height: 100,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(20),
+                              color: Colors.pink,
+                              image: const DecorationImage(
+                                image: AssetImage('assets/9.png'),
+                                fit: BoxFit.cover,
+                              ),
+                            ),
+                          );
+                        },
+                      ),
+                      const Text("There"),
+                      const Text("By"),
+                    ],
+                  ),
+                ),
+                const SizedBox(height: 10),
+                const Padding(
+                  padding: EdgeInsets.only(left: 16),
+                  child: Textt(
+                    text: "Categories",
+                    size: 20,
+                    weight: FontWeight.w500,
+                  ),
+                ),
+                const SizedBox(height: 10),
+                const Categories(),
+              ],
+            ),
+          ),
+          builder: (context, child) {
+            double animValue = _animationController.value;
+            final slideAmount = maxSlide * animValue;
+            final contentScale = 1.0 - (0.3 * animValue);
+            return Stack(
+              children: <Widget>[
+                const MyDrawer(),
+                Transform(
+                  transform: Matrix4.identity()
+                    ..translate(slideAmount)
+                    ..scale(contentScale, contentScale),
+                  alignment: Alignment.centerLeft,
+                  child: GestureDetector(
+                    onTap: _animationController.isCompleted ? close : null,
+                    child: child,
+                  ),
+                ),
+              ],
+            );
+          },
+        ),
       ),
     );
   }
 
-    void _onDragStart(DragStartDetails details) {
+  void _onDragStart(DragStartDetails details) {
     bool isDragOpenFromLeft = _animationController.isDismissed &&
         details.globalPosition.dx < minDragStartEdge;
     bool isDragCloseFromRight = _animationController.isCompleted &&
@@ -252,10 +235,8 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
       open();
     }
   }
-
 }
 
-// ignore: must_be_immutable
 class CircleTabIndicator extends Decoration {
   final Color color;
   double radius;

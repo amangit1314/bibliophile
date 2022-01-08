@@ -1,4 +1,5 @@
 import 'package:book_info/screens/nav_pages/bar_item_page.dart';
+import 'package:book_info/screens/nav_pages/drawer.dart';
 import 'package:book_info/screens/nav_pages/my_page.dart';
 import 'package:book_info/screens/nav_pages/search_page.dart';
 import 'package:flutter/material.dart';
@@ -14,7 +15,9 @@ class MainPage extends StatefulWidget {
 
 class _MainPageState extends State<MainPage> {
   List pages = [
-    const Home(),
+    const Home(
+      child: MyDrawer(),
+    ),
     const BarItemPage(),
     const SearchPage(),
     const MyPage(),
