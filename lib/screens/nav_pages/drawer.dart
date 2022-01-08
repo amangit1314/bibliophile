@@ -1,5 +1,5 @@
 import 'package:book_info/screens/nav_pages/my_page.dart';
-import 'package:book_info/utils/widgets/text.dart';
+import 'package:book_info/components/text.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';

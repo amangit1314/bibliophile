@@ -1,7 +1,7 @@
 import 'package:book_info/screens/home/categories.dart';
 import 'package:book_info/screens/nav_pages/drawer.dart';
 import 'package:book_info/screens/nav_pages/my_page.dart';
-import 'package:book_info/utils/widgets/text.dart';
+import 'package:book_info/components/text.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter/material.dart';
 

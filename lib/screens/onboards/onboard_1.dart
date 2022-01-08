@@ -1,5 +1,5 @@
-import 'package:book_info/utils/widgets/responsive_button.dart';
-import 'package:book_info/utils/widgets/text.dart';
+import 'package:book_info/components/responsive_button.dart';
+import 'package:book_info/components/text.dart';
 //import 'package:book_info/screens/authentication/register_screen.dart';
 import 'package:flutter/material.dart';
 //import 'package:get/get.dart';

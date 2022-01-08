@@ -2,10 +2,10 @@
 import 'package:book_info/models/user.dart';
 import 'package:book_info/screens/nav_pages/edit_my_page.dart';
 import 'package:book_info/utils/user_preferences.dart';
-import 'package:book_info/utils/widgets/app_bar_widget.dart';
-import 'package:book_info/utils/widgets/button_widget.dart';
-import 'package:book_info/utils/widgets/numbers_widget.dart';
-import 'package:book_info/utils/widgets/profile.dart';
+import 'package:book_info/components/app_bar_widget.dart';
+import 'package:book_info/components/button_widget.dart';
+import 'package:book_info/components/numbers_widget.dart';
+import 'package:book_info/components/profile.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 

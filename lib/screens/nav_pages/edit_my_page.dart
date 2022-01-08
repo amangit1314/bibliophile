@@ -1,9 +1,9 @@
 //import 'package:animated_theme_switcher/animated_theme_switcher.dart';
 import 'package:book_info/models/user.dart';
 import 'package:book_info/utils/user_preferences.dart';
-import 'package:book_info/utils/widgets/app_bar_widget.dart';
-import 'package:book_info/utils/widgets/profile.dart';
-import 'package:book_info/utils/widgets/text_field_widgget.dart';
+import 'package:book_info/components/app_bar_widget.dart';
+import 'package:book_info/components/profile.dart';
+import 'package:book_info/components/text_field_widgget.dart';
 import 'package:flutter/material.dart';
 
 class EditMyPage extends StatefulWidget {

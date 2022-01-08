@@ -1,4 +1,4 @@
-import 'package:book_info/utils/widgets/text.dart';
+import 'package:book_info/components/text.dart';
 import 'package:flutter/material.dart';
 
 class Categories extends StatefulWidget {

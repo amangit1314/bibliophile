@@ -1,5 +1,5 @@
-import 'package:book_info/utils/widgets/social_card.dart';
-import 'package:book_info/utils/widgets/text_field.dart';
+import 'package:book_info/components/social_card.dart';
+import 'package:book_info/components/text_field.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
