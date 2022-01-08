@@ -4,7 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 AppBar buildAppBar(BuildContext context) {
-  //final isDarkMode = Theme.of(context).brightness == Brightness.dark;
+  final isDarkMode = Theme.of(context).brightness == Brightness.dark;
   final icon = CupertinoIcons.moon_stars;
 
   return AppBar(
@@ -18,12 +18,7 @@ AppBar buildAppBar(BuildContext context) {
             icon,
             color: Colors.black,
           ),
-          onPressed: () {
-            //final theme = isDarkMode ? MyThemes.lightTheme : MyThemes.darkTheme;
-
-            //final switcher = ThemeSwitcher.of(context)!;
-            //           switcher.changeTheme(theme: theme);
-          },
+          onPressed: () {},
         ),
       ),
     ],
